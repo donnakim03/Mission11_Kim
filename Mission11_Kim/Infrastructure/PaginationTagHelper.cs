@@ -17,6 +17,7 @@ namespace Mission11_Kim.Infrastructure
             urlHelperFactory = temp;
         }
 
+        // Attributes for pagination
         [ViewContext]
         [HtmlAttributeNotBound]
         public ViewContext? ViewContext { get; set; }
@@ -28,6 +29,7 @@ namespace Mission11_Kim.Infrastructure
         public string PageClassNormal { get; set; } = String.Empty;
         public string PageClassSelected { get; set; } = String.Empty;
 
+        // override parent class Process() method
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             if (ViewContext != null && PageModel != null)
@@ -42,7 +44,7 @@ namespace Mission11_Kim.Infrastructure
 
                     tag.Attributes["href"] = urlHelper.Action(PageAction, new { pageNum = i });
 
-                    if (PageClassEnabled)
+                    if (PageClassEnabled) // To create CSS for the page buttons
                     {
                         tag.AddCssClass(PageClass);
                         tag.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal);

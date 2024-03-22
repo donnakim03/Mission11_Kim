@@ -30,7 +30,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute("pagination", "Books/{pageNum}", new {Controller = "Home", action = "Index"});
+app.MapControllerRoute("pagination", "Books/{pageNum}", new {Controller = "Home", action = "Index"}); // improve URL
 app.MapDefaultControllerRoute();
 
 app.Run();
